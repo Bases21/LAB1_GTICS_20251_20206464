@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Resultado de la Carrera</title>
+    </head>
+    <body>
+        <h2>Resultado de la Carrera</h2>
+
+        <p>Tu tortuga: <strong th:text="${seleccion}"></strong></p>
+        <p>Apuesta realizada: S/ <span th:text="${apuesta}"></span></p>
+
+        <h3>Posiciones:</h3>
+        <ol>
+            <li th:each="entry : ${resultados}">
+                <span th:text="${entry.key}"></span> - Puntaje: <span th:text="${entry.value}"></span>
+            </li>
+        </ol>
+
+        <h3 th:if="${gano}">¡Felicidades! Has ganado: S/ <span th:text="${ganancia}"></span></h3>
+        <h3 th:unless="${gano}">Lo siento, has perdido tu apuesta</h3>
+
+        <a href="/">Volver a jugar</a>
+    </body>
+</html>
